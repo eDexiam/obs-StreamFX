@@ -52,7 +52,7 @@ if(APPLE)
 endif()
 
 # Check if this is standalone or bundled.
-set(STANDALONE OFF)
+set(STANDALONE ON)
 if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_CURRENT_LIST_DIR}")
 	set(GROUPED OFF)
 	set(PREFIX "")
