@@ -164,23 +164,21 @@ jobs:
         CMAKE_BUILD_TYPE: "Debug"
       run: |
         cmake --build "build/ci" --config ${{ env.CMAKE_BUILD_TYPE }} --target StreamFX
-    - name: "Build: RelWithDebInfo"
+    - name: "Build: Release"
       shell: bash
       env:
         CMAKE_BUILD_TYPE: "RelWithDebInfo"
       run: |
         cmake --build "build/ci" --config ${{ env.CMAKE_BUILD_TYPE }} --target StreamFX
-    - name: "Build: Release"
-      shell: bash
-      env:
-        CMAKE_BUILD_TYPE: "Release"
-      run: |
-        cmake --build "build/ci" --config ${{ env.CMAKE_BUILD_TYPE }} --target StreamFX
+    - name: "Construct installer"
+      uses: callebstrom/inno-setup-cli-action@6.2.1
+      with:
+        file: D:\\a\\obs-StreamFX\obs-StreamFX\\build\\ci\\installer.iss
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.2
       with: 
         name: "Build ${{ matrix.compiler }}"
-        path: "D:\\a\\obs-StreamFX"
+        path: "D:\\a\\obs-StreamFX\\obs-StreamFX\\build"
 
   macos:
     strategy:
