@@ -164,10 +164,16 @@ jobs:
         CMAKE_BUILD_TYPE: "Debug"
       run: |
         cmake --build "build/ci" --config ${{ env.CMAKE_BUILD_TYPE }} --target StreamFX
-    - name: "Build: Release"
+    - name: "Build: RelWithDebInfo"
       shell: bash
       env:
         CMAKE_BUILD_TYPE: "RelWithDebInfo"
+      run: |
+        cmake --build "build/ci" --config ${{ env.CMAKE_BUILD_TYPE }} --target StreamFX
+    - name: "Build: Release"
+      shell: bash
+      env:
+        CMAKE_BUILD_TYPE: "Release"
       run: |
         cmake --build "build/ci" --config ${{ env.CMAKE_BUILD_TYPE }} --target StreamFX
     - name: Upload a Build Artifact
